@@ -12,7 +12,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 
 # Initialize the Cohere client
-API_KEY='jhkxXds6lugvlbPsqaxIflMus55jI8nlUPk4Gw2r'
+API_KEY='API_KEY'
 cohere_client = cohere.Client(API_KEY)
 
 # Load FAISS index from disk
