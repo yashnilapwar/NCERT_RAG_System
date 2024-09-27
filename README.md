@@ -38,8 +38,7 @@ Ensure you have Python 3.9+ installed and create a virtual environment.
 
 1. **Clone the Repository**:
    ```bash
-   git clone <your-github-repo-url>
-   cd <project-directory>
+   git clone https://github.com/yashnilapwar/NCERT_RAG_System.git
    ```
 
 2. **Install Dependencies**:
