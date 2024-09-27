@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NCERT Query App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        #response {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        /* Add a scrollable text area for long responses */
+        #response {
+            white-space: pre-wrap;  /* Preserve whitespace */
+            background-color: #f9f9f9;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            max-height: 400px;  /* Limit height to 400px */
+            overflow-y: auto;  /* Enable vertical scrolling */
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>NCERT Query App</h1>
+        <div class="form-group">
+            <label for="query">Enter your query:</label>
+            <textarea id="query" rows="4"></textarea>
+        </div>
+        <button onclick="submitQuery()">Submit</button>
+
+        <div id="response"></div>
+    </div>
+
+    <script>
+        async function submitQuery() {
+            const query = document.getElementById('query').value;
+            const responseElement = document.getElementById('response');
+
+            // Clear previous response
+            responseElement.innerHTML = 'Loading...';
+
+            // Send a POST request to the backend
+            const response = await fetch('http://localhost:8000/query/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    query: query
+                }),
+            });
+
+            // Parse the response JSON
+            const result = await response.json();
+
+            // Display the response in the frontend
+            if (result.generated_text) {
+                responseElement.innerHTML = result.generated_text;
+            } else if (result.error) {
+                responseElement.innerHTML = 'Error: ' + result.error;
+            } else {
+                responseElement.innerHTML = 'No response generated.';
+            }
+        }
+    </script>
+</body>
+</html>

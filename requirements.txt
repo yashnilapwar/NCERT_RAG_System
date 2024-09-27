@@ -1,0 +1,8 @@
+faiss-cpu==1.7.3
+numpy==1.23.5
+sentence-transformers==2.2.2
+fastapi==0.95.1
+pydantic==1.10.7
+uvicorn==0.22.0
+cohere==4.5.0
+pdfplumber==0.7.5

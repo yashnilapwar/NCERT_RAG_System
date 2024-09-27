@@ -1,0 +1,11 @@
+# Ignore the environment folder
+env/
+
+# Ignore Python cache files
+__pycache__/
+
+# Ignore any other unnecessary files or directories
+*.pyc
+*.pyo
+*.pyd
+*.swp
