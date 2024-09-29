@@ -1,5 +1,5 @@
 
-# Part 1: Smart AI Query System
+# Smart AI Query System
 
 This project demonstrates the implementation of a FastAPI-based system that combines FAISS (Facebook AI Similarity Search) for vector database search and a Large Language Model (LLM) API from Cohere to respond to user queries. The application can search for relevant content from a document, perform similarity searches, and generate meaningful responses.
 
